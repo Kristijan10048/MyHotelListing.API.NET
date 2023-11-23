@@ -5,6 +5,7 @@ namespace HotelListing.API.Data.Confirgurations
 {
     public class CountryConfiguration : IEntityTypeConfiguration<Country>
     {
+        // inital data for Country in the db
         public void Configure(EntityTypeBuilder<Country> builder)
         {
             builder.HasData(
@@ -25,6 +26,12 @@ namespace HotelListing.API.Data.Confirgurations
                     Id = 3,
                     Name = "Cayman Island",
                     ShortName = "CI"
+                },
+                new Country
+                {
+                    Id = 4,
+                    Name =  "USA",
+                    ShortName = "US"
                 }
             );
         }

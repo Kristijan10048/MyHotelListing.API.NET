@@ -4,6 +4,9 @@
 
 namespace HotelListing.API.Migrations
 {
+    /// <summary>
+    /// Inital Migraion. To apply it run Package manager terminal: PM> Add-Migration InitialMigration
+    /// </summary>
     public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

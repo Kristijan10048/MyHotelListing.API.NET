@@ -8,20 +8,38 @@ namespace HotelListing.API.Data
 {
     public class HotelListingDbContext : IdentityDbContext<ApiUser>
     {
+        #region Costructor
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="options"></param>
         public HotelListingDbContext(DbContextOptions options) : base(options)
         {
 
         }
+        #endregion
 
+        #region Public properties/Tables registration
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<Country> Countries { get; set; }
+        public DbSet<HotelManager> HotelManagers { get; set; }
 
+        #endregion
+
+        /// <summary>
+        /// Inserts inital db data
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            //Db seeding. Add initial data in the db
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
             modelBuilder.ApplyConfiguration(new CountryConfiguration());
             modelBuilder.ApplyConfiguration(new HotelConfiguration());
+
+            //to do 
         }
     }
 
