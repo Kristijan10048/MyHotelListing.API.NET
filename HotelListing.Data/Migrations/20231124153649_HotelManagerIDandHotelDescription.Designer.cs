@@ -4,6 +4,7 @@ using HotelListing.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelListing.API.Migrations
 {
     [DbContext(typeof(HotelListingDbContext))]
-    partial class HotelListingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231124153649_HotelManagerIDandHotelDescription")]
+    partial class HotelManagerIDandHotelDescription
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -237,9 +240,6 @@ namespace HotelListing.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("HotelId")
-                        .HasColumnType("int");
-
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -258,37 +258,7 @@ namespace HotelListing.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("HotelId");
-
                     b.ToTable("HotelManagers");
-                });
-
-            modelBuilder.Entity("HotelListing.API.Data.HotellDescription", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool?>("FreeWiFi")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("HasFitnessCenter")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("HasNonSmokingRooms")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("HasSpa")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("PrivateParking")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("HotellDescription");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -320,13 +290,13 @@ namespace HotelListing.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8d8899d7-a8c2-498e-97ad-645b1c72dbbf",
+                            Id = "a5aa92e1-050b-4351-a7c1-cded14be1527",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "6f4908ec-66c7-4077-ba14-7879a9608bb8",
+                            Id = "d9cff294-1b58-4ead-89f6-24ea92fb96d4",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -449,17 +419,6 @@ namespace HotelListing.API.Migrations
                     b.Navigation("Country");
                 });
 
-            modelBuilder.Entity("HotelListing.API.Data.HotelManager", b =>
-                {
-                    b.HasOne("HotelListing.API.Data.Hotel", "Hotel")
-                        .WithMany("HotelManagers")
-                        .HasForeignKey("HotelId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Hotel");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -514,11 +473,6 @@ namespace HotelListing.API.Migrations
             modelBuilder.Entity("HotelListing.API.Data.Country", b =>
                 {
                     b.Navigation("Hotels");
-                });
-
-            modelBuilder.Entity("HotelListing.API.Data.Hotel", b =>
-                {
-                    b.Navigation("HotelManagers");
                 });
 #pragma warning restore 612, 618
         }

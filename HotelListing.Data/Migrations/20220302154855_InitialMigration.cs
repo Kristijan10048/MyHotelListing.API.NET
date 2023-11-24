@@ -5,7 +5,9 @@
 namespace HotelListing.API.Migrations
 {
     /// <summary>
-    /// Inital Migraion. To apply it run Package manager terminal: PM> Add-Migration InitialMigration
+    /// Inital Migraion. To create it run Package manager terminal: PM> Add-Migration InitialMigration
+    /// To write the migration to the db run Update-Database 
+    /// To instal dotnet ef command: dotnet tool install --global dotnet-ef
     /// </summary>
     public partial class InitialMigration : Migration
     {

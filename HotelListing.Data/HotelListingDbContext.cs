@@ -23,7 +23,7 @@ namespace HotelListing.API.Data
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<HotelManager> HotelManagers { get; set; }
-
+        public DbSet<HotellDescription> HotellDescription { get; set; }
         #endregion
 
         /// <summary>

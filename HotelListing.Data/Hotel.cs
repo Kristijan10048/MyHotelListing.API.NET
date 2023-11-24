@@ -28,6 +28,9 @@ namespace HotelListing.API.Data
         [ForeignKey(nameof(CountryId))]
         public int CountryId { get; set; }
         public Country Country { get; set; }
+
+
+        public virtual IList<HotelManager> HotelManagers { get; set; }
         #endregion
     }
 }
