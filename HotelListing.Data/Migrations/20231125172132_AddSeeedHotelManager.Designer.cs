@@ -4,6 +4,7 @@ using HotelListing.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelListing.API.Migrations
 {
     [DbContext(typeof(HotelListingDbContext))]
-    partial class HotelListingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231125172132_AddSeeedHotelManager")]
+    partial class AddSeeedHotelManager
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -220,41 +223,6 @@ namespace HotelListing.API.Migrations
                         });
                 });
 
-            modelBuilder.Entity("HotelListing.API.Data.HotelDescription", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool?>("FreeWiFi")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("HasFitnessCenter")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("HasNonSmokingRooms")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("HasSpa")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("PrivateParking")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("HotellDescription");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            HasSpa = true
-                        });
-                });
-
             modelBuilder.Entity("HotelListing.API.Data.HotelManager", b =>
                 {
                     b.Property<int>("Id")
@@ -325,6 +293,34 @@ namespace HotelListing.API.Migrations
                         });
                 });
 
+            modelBuilder.Entity("HotelListing.API.Data.HotellDescription", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool?>("FreeWiFi")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("HasFitnessCenter")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("HasNonSmokingRooms")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("HasSpa")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("PrivateParking")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("HotellDescription");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -354,13 +350,13 @@ namespace HotelListing.API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6cde0cbf-a11d-4c76-b323-1b3eb732f872",
+                            Id = "5fe8b3c9-ddee-42a4-8065-7cb05379754f",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "f22df22b-4512-4c48-8d3f-a1848560ae48",
+                            Id = "853465e2-23a1-41b5-9908-e527b8b2b899",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -480,7 +476,7 @@ namespace HotelListing.API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HotelListing.API.Data.HotelDescription", "HotellDescription")
+                    b.HasOne("HotelListing.API.Data.HotellDescription", "HotellDescription")
                         .WithMany()
                         .HasForeignKey("HotellDescriptionId");
 

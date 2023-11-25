@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
 
 namespace HotelListing.API.Data
@@ -23,7 +24,7 @@ namespace HotelListing.API.Data
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<HotelManager> HotelManagers { get; set; }
-        public DbSet<HotellDescription> HotellDescription { get; set; }
+        public DbSet<HotelDescription> HotellDescription { get; set; }
         #endregion
 
         /// <summary>
@@ -38,6 +39,8 @@ namespace HotelListing.API.Data
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
             modelBuilder.ApplyConfiguration(new CountryConfiguration());
             modelBuilder.ApplyConfiguration(new HotelConfiguration());
+            modelBuilder.ApplyConfiguration(new HotelManagerConfiguration());
+            modelBuilder.ApplyConfiguration(new HotelDescriptionConfiguration());
 
             //to do 
         }
