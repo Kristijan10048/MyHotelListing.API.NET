@@ -12,17 +12,33 @@ using HotelListing.API.Core.Models.Hotel;
 
 namespace HotelListing.API.Core.Repository
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
+        #region Private Read Only Properties
         private readonly HotelListingDbContext _context;
         private readonly IMapper _mapper;
+        #endregion
 
+        /// <summary>
+        /// Costructor
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="mapper"></param>
         public GenericRepository(HotelListingDbContext context, IMapper mapper)
         {
             this._context = context;
             this._mapper = mapper;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         public async Task<T> AddAsync(T entity)
         {
             await _context.AddAsync(entity);

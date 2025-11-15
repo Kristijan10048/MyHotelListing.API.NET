@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HotelListing.API\HotelListing.API.csproj" />
+  </ItemGroup>
+
 </Project>

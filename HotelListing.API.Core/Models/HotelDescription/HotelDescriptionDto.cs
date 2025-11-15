@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace HotelListing.API.Core.Models.HotelDescription
 {
-    public class HotelDescriptionDto
+    public class HotelDescriptionDto :BaseHotelDescriptionDto
     {
-       
+       public int Id { get; set; }
         
         #region Optiional fileds
 

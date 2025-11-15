@@ -11,7 +11,7 @@ namespace HotelListing.API.Data
     {
         #region Costructor
         /// <summary>
-        /// 
+        /// Constructor
         /// </summary>
         /// <param name="options"></param>
         public HotelListingDbContext(DbContextOptions options) : base(options)
